@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 13 Practice</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background: goldenrod;
+        padding: 30px;
+    }
+
+    /* 1️⃣ Box with smooth color change */
+    .color-box{
+        width: 150px;
+        height: 150px;
+        background: red;
+        transition: background 1s ease;
+        margin-bottom: 40px;
+    }
+    .color-box:hover{
+        background: rgb(18, 173, 28);
+    }
+
+
+
+
+
+
+    /* 2. Text moving left to right */
+    @keyframes slide {
+        0%{ transform: translateX(0); }
+        100%{ transform: translateX(200px); }
+    }
+    .moving-text{
+        font-size: 22px;
+        animation: slide 3s linear infinite;
+        margin-bottom: 40px;
+    }
+
+
+
+
+
+
+
+    /* 3. Image grows on hover using scale() */
+    .img{
+        width: 200px;
+        transition: transform 0.5s ease;
+        margin-bottom: 40px;
+    }
+    .img:hover{
+        transform: scale(1.2);
+    }
+
+
+
+
+
+    
+
+    /* 4. Rotating square */
+    .rotate-box{
+        width: 100px;
+        height: 100px;
+        background: rgb(255, 19, 19);
+        animation: spin 3s linear infinite;
+        margin-bottom: 40px;
+    }
+
+    @keyframes spin {
+        0%{ transform: rotate(0deg); }
+        100%{ transform: rotate(360deg); }
+    }
+
+
+
+
+
+
+
+    /* 5️. Button with smooth hover + focus */
+    .button{
+        padding: 12px 25px;
+        background: black;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 16px;
+    }
+    .button:hover{
+        background: rgb(50, 50, 50);
+        transform: scale(1.1);
+    }
+    .button:focus{
+        outline: 3px solid orange;
+        transform: scale(1.12);
+    }
+</style>
+
+
+
+
+
+</head>
+<body>
+
+<h2>CSS Practice</h2>
+
+<h3>Color Light blue to Orange</h3>
+<div class="color-box"></div>
+<hr>
+
+<h3> Task 2 Moving Text</h3>
+<div class="moving-text">Click Me-></div>
+
+<h3>Task 3 Image grow</h3>
+<img class="img" src="./IMG_2993 (1).JPG" alt="Sample"> <hr>
+
+<h3>Task 4 rotate box</h3>
+<div class="rotate-box"></div> <hr>
+
+<h3>Task 5 Button</h3>
+<button class="button">Click Me</button>
+
+</body>
+</html>
