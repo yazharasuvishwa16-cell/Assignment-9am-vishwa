@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Day 29 Practice – JS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Day 29 - JavaScript Practice</h2>
+
+  <!-- Button for Closure Practice -->
+  <button id="myButton">Click Me</button>
+
+  <script>
+    
+    // Closure that counts button clicks
+   
+
+    function createClickCounter() {
+      let count = 0; // private variable (closure)
+
+      return function () {
+        count++;
+        console.log(`Button clicked ${count} times`);
+      };
+    }
+
+    const button = document.getElementById("myButton");
+    if (button) {
+      const handleClick = createClickCounter();
+      button.addEventListener("click", handleClick);
+    }
+
+    
+    // Callback using setTimeout
+  
+
+    function delayedMessage(callback) {
+      setTimeout(() => {
+        callback("Hello, I'm late!!!");
+      }, 2000);
+    }
+
+    delayedMessage((message) => {
+      console.log(message);
+    });
+
+ 
+    // Convert callback code into a Promise
+ 
+
+    function delayedMessagePromise() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("Hello I am Promised to return late to you <3");
+        }, 2000);
+      });
+    }
+
+    delayedMessagePromise().then((msg) => {
+      console.log(msg);
+    });
+
+    // Async / Await with try / catch
+    
+
+    async function showMessage() {
+      try {
+        const message = await delayedMessagePromise();
+        console.log("Async/Await:", message);
+      } catch (error) {
+        console.error("Something went wrong", error);
+      }
+    }
+
+    showMessage();
+
+
+    // Object Destructuring
+ 
+
+    const user = {
+      name: "Vishwa",
+      age: 20,
+      country: "India",
+      profession: "Student"
+    };
+
+    const { name, age, country } = user;
+
+    console.log(name);    // Vishwa
+    console.log(age);     // 20
+    console.log(country); // India
+  </script>
+
+</body>
+</html>

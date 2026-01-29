@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 30 – Asynchronous JavaScript</title>
+</head>
+<body>
+
+  <h1>Day 30 – Asynchronous JavaScript</h1>
+
+  <h2>1. What is asynchronous JavaScript? Why is it needed?</h2>
+  <p>
+    Asynchronous JavaScript allows tasks to run in the background without blocking the main execution thread.
+    JavaScript is single-threaded, so asynchronous behavior is needed to handle time-consuming operations such
+    as API calls, file loading, timers, and database requests. It helps keep applications responsive and improves
+    user experience.
+  </p>
+
+  <h2>2. Explain callback functions with a real-life example.</h2>
+  <p>
+    A callback function is a function that is passed as an argument to another function and executed later
+    after a task is completed. A real-life example is ordering food at a restaurant and giving your phone number.
+    The restaurant calls you when the food is ready. Similarly, callbacks are executed once an operation finishes.
+  </p>
+
+  <h2>3. What is callback hell? Why is it a problem?</h2>
+  <p>
+    Callback hell occurs when multiple callback functions are nested inside each other, resulting in complex
+    and unreadable code. It makes debugging, maintenance, and error handling difficult and reduces the
+    scalability of the application.
+  </p>
+
+  <h2>4. Define a Promise and explain its states.</h2>
+  <p>
+    A Promise is an object that represents the eventual completion or failure of an asynchronous operation.
+    A promise has three states: Pending (initial state), Fulfilled (operation successful), and Rejected
+    (operation failed).
+  </p>
+
+  <h2>5. Difference between callbacks and promises.</h2>
+  <p>
+    Callbacks involve passing functions into other functions, which can lead to deeply nested code.
+    Promises provide a cleaner structure with better readability and easier error handling. Promises
+    help avoid callback hell and improve maintainability.
+  </p>
+
+  <h2>6. Why is async/await preferred over .then()?</h2>
+  <p>
+    Async/await is preferred because it makes asynchronous code look like synchronous code.
+    It improves readability and allows error handling using try/catch blocks, making the code
+    easier to understand and maintain compared to chained .then() methods.
+  </p>
+
+  <h2>7. Can await be used without async? Why?</h2>
+  <p>
+    No, await cannot be used without an async function. The async keyword tells JavaScript that
+    the function contains asynchronous operations. Await pauses the execution until a promise
+    is resolved, which is only allowed inside async functions.
+  </p>
+
+  <h2>8. What happens if a promise is rejected?</h2>
+  <p>
+    If a promise is rejected, the error is handled using the .catch() method or a try/catch block
+    in async/await. If the rejection is not handled, it can cause unhandled promise rejection errors.
+  </p>
+
+  <h2>9. Explain error handling in async/await.</h2>
+  <p>
+    Error handling in async/await is done using try/catch blocks. Any error that occurs during the
+    execution of awaited promises is caught in the catch block, allowing centralized and clean
+    error management.
+  </p>
+
+  <h2>10. Write one real-world use case for asynchronous JavaScript.</h2>
+  <p>
+    A real-world use case of asynchronous JavaScript is fetching user data from an API in a web
+    application. For example, loading social media posts without freezing the webpage while the
+    data is being retrieved from the server.
+  </p>
+
+</body>
+</html>

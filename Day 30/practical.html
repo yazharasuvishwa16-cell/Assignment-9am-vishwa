@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 30 – Asynchronous JavaScript (Practical)</title>
+</head>
+<body>
+
+  <h1>Day 30 – Section B: Coding Assignments</h1>
+
+  <h2>1. Callback function using setTimeout</h2>
+  <pre>
+function delayedMessage(callback) {
+  setTimeout(() => {
+    callback("Message after 3 seconds");
+  }, 3000);
+}
+
+delayedMessage((msg) => {
+  console.log(msg);
+});
+  </pre>
+
+  <h2>2. Convert callback-based function into a Promise</h2>
+  <pre>
+function delayedMessagePromise() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Converted to Promise");
+    }, 2000);
+  });
+}
+  </pre>
+
+  <h2>3. Create a Promise that resolves after 2 seconds</h2>
+  <pre>
+const promiseExample = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("Promise resolved after 2 seconds");
+  }, 2000);
+});
+
+promiseExample.then(console.log);
+  </pre>
+
+  <h2>4. Handle a rejected Promise using .catch()</h2>
+  <pre>
+const rejectedPromise = new Promise((resolve, reject) => {
+  reject("Something went wrong");
+});
+
+rejectedPromise
+  .catch(error => console.error(error));
+  </pre>
+
+  <h2>5. Rewrite a Promise example using async/await</h2>
+  <pre>
+async function showMessage() {
+  const result = await promiseExample;
+  console.log(result);
+}
+
+showMessage();
+  </pre>
+
+  <h2>6. Use try...catch with async/await</h2>
+  <pre>
+async function handleError() {
+  try {
+    await rejectedPromise;
+  } catch (error) {
+    console.error("Caught error:", error);
+  }
+}
+
+handleError();
+  </pre>
+
+  <h2>7. Function returning a Promise with random success or failure</h2>
+  <pre>
+function randomResult() {
+  return new Promise((resolve, reject) => {
+    const success = Math.random() > 0.5;
+    if (success) {
+      resolve("Success!");
+    } else {
+      reject("Failure!");
+    }
+  });
+}
+
+randomResult()
+  .then(console.log)
+  .catch(console.error);
+  </pre>
+
+  <h2>8. Chain two .then() methods in a Promise</h2>
+  <pre>
+promiseExample
+  .then(result => {
+    console.log(result);
+    return "Second then executed";
+  })
+  .then(message => {
+    console.log(message);
+  });
+  </pre>
+
+  <h2>9. Async function that waits for two Promises</h2>
+  <pre>
+async function waitForBoth() {
+  const p1 = Promise.resolve("First Promise");
+  const p2 = Promise.resolve("Second Promise");
+
+  const result1 = await p1;
+  const result2 = await p2;
+
+  console.log(result1, result2);
+}
+
+waitForBoth();
+  </pre>
+
+  <h2>10. Explain output of an async function (using comments)</h2>
+  <pre>
+async function example() {
+  console.log("Start");
+  await Promise.resolve();
+  console.log("End");
+}
+
+example();
+
+/*
+Output:
+Start
+End
+
+Explanation:
+The await pauses execution until the promise resolves,
+then continues execution in order.
+*/
+  </pre>
+
+</body>
+</html>

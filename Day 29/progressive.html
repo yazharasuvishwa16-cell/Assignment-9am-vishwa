@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Day 29 - Progressive Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    button {
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .card {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid lightgray;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Day 29 - Progressive Project</h2>
+
+  <button id="loadUserBtn">Load User</button>
+
+  <div id="userCard" class="card"></div>
+
+  <script>
+ 
+    // Closure to store PRIVATE user data
+   
+    function createUserStore() {
+      let userState = null; // private data
+
+      return {
+        setUser(user) {
+          userState = user;
+        },
+        getUser() {
+          return userState;
+        }
+      };
+    }
+
+    const userStore = createUserStore();
+
+ 
+    //  Async/Await for API call (simulated)
+   
+    async function fetchUserFromAPI() {
+      const response = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            id: 1,
+            name: "Vishwa",
+            age: 20,
+            country: "India"
+          });
+        }, 1500);
+      });
+
+      return response;
+    }
+
+    /*
+     UI Rendering using Template Literals
+     Destructuring API response
+     Spread operator for state update
+    */
+    async function loadUser() {
+      try {
+        const apiUser = await fetchUserFromAPI();
+
+        // Destructuring
+        const { name, age, country } = apiUser;
+
+        // Spread operator (state update)
+        const updatedUser = {
+          ...apiUser,
+          loggedIn: true
+        };
+
+        // Save to private store (closure)
+        userStore.setUser(updatedUser);
+
+        // UI rendering (template literals)
+        document.getElementById("userCard").innerHTML = `
+          <h3>User Profile</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Age:</strong> ${age}</p>
+          <p><strong>Country:</strong> ${country}</p>
+          <p><strong>Status:</strong> Logged In Successfully</p>
+        `;
+      } catch (error) {
+        console.error("Error loading user", error);
+      }
+    }
+
+    document
+      .getElementById("loadUserBtn")
+      .addEventListener("click", loadUser);
+  </script>
+
+</body>
+</html>

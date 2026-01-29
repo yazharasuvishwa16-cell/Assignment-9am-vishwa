@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 30 - Scenario Based Questions</title>
+</head>
+<body>
+
+  <h1>Day 30 - Section C: Scenario-Based Questions</h1>
+
+  <h2>1. How would you handle an API call that takes time to respond?</h2>
+  <p>
+    An API call that takes time to respond should be handled asynchronously using promises or async/await.
+    This allows the application to continue running without freezing the user interface. A loading indicator
+    can be shown to inform users that data is being fetched, and proper error handling should be added in case
+    the API fails.
+  </p>
+
+  <h2>2. Why should long tasks not block the main thread?</h2>
+  <p>
+    Long tasks should not block the main thread because JavaScript runs on a single thread. If the main thread
+    is blocked, the browser becomes unresponsive, leading to poor user experience. Asynchronous execution
+    allows long tasks to run in the background while keeping the interface responsive.
+  </p>
+
+  <h2>3. Which async method would you choose for a large application and why?</h2>
+  <p>
+    In a large application, async/await is preferred because it improves code readability and maintainability.
+    It allows asynchronous code to be written in a synchronous style and provides better error handling using
+    try/catch blocks, making the code easier to debug and scale.
+  </p>
+
+  <h2>4. How do promises improve readability?</h2>
+  <p>
+    Promises improve readability by avoiding deeply nested callback functions. They allow chaining of
+    asynchronous operations using .then() and centralized error handling using .catch(). This results in
+    cleaner, more structured, and easier-to-understand code.
+  </p>
+
+  <h2>5. How does async/await simplify debugging?</h2>
+  <p>
+    Async/await simplifies debugging by allowing developers to use standard try/catch blocks for error handling.
+    Since async code looks like synchronous code, it is easier to trace execution flow, identify issues, and
+    debug errors compared to traditional callback-based approaches.
+  </p>
+
+</body>
+</html>

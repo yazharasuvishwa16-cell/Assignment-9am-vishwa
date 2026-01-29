@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Day 29 - Practical Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    button {
+      padding: 8px 16px;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    .box {
+      margin-bottom: 25px;
+      padding: 15px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Day 29 - Practical Mini Projects</h2>
+
+  <!--  Login Counter -->
+  <div class="box">
+    <h3>Login Counter </h3>
+    <button id="loginBtn">Login</button>
+    <p id="loginCount">Logins: 0</p>
+  </div>
+
+  <!--  Simulated API -->
+  <div class="box">
+    <h3>Simulated API Call </h3>
+    <button id="apiBtn">Fetch Data</button>
+    <p id="apiResult"></p>
+  </div>
+
+  <!--  Async/Await -->
+  <div class="box">
+    <h3>Fetch User Data </h3>
+    <button id="userBtn">Get User</button>
+    <p id="userResult"></p>
+  </div>
+
+  <!-- Shopping Cart -->
+  <div class="box">
+    <h3> Shopping Cart</h3>
+    <button id="addItem">Add Item</button>
+    <p id="cartResult"></p>
+  </div>
+
+  <!-- Rest Operator -->
+  <div class="box">
+    <h3>Rest Operator </h3>
+    <p id="sumResult"></p>
+  </div>
+
+  <script>
+ 
+//  Login Counter using Closure
+   
+    function createLoginCounter() {
+      let count = 0;
+      return function () {
+        count++;
+        document.getElementById("loginCount").textContent =
+          `Logins: ${count}`;
+      };
+    }
+
+    const loginCounter = createLoginCounter();
+    document.getElementById("loginBtn").addEventListener("click", loginCounter);
+
+    
+ // Simulated API Call using Promise
+   
+    function fakeApiCall() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("API Data Loaded successfully");
+        }, 2000);
+      });
+    }
+
+    document.getElementById("apiBtn").addEventListener("click", () => {
+      fakeApiCall().then((data) => {
+        document.getElementById("apiResult").textContent = data;
+      });
+    });
+
+  
+// Fetch User Data with Async/Await
+   
+    async function fetchUser() {
+      try {
+        const user = await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve({ name: "Vishwa", age: 20 });
+          }, 1500);
+        });
+
+        document.getElementById("userResult").textContent =
+          `Name: ${user.name}, Age: ${user.age}`;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    document.getElementById("userBtn").addEventListener("click", fetchUser);
+
+
+//  Shopping Cart using Spread Operator
+  
+    let cart = [];
+
+    document.getElementById("addItem").addEventListener("click", () => {
+      const newItem = `Item ${cart.length + 1}`;
+      cart = [...cart, newItem]; // spread operator
+      document.getElementById("cartResult").textContent =
+        cart.join(", ");
+    });
+
+
+// Function with Rest Operator
+
+    function sumAll(...numbers) {
+      return numbers.reduce((total, num) => total + num, 0);
+    }
+
+    const total = sumAll(10, 29, 38, 97);
+    document.getElementById("sumResult").textContent =
+      `Sum: ${total}`;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 31 - Practice Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    button {
+      padding: 8px 12px;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    pre {
+      background: #222;
+      color: rgb(30, 61, 217);
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .box {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Day 31 - JavaScript Practice Tasks</h1>
+
+  <!-- 1. What is an API -->
+  <div class="box">
+    <h2> What is an API?</h2>
+    <p>
+      An API allows one application to request data from another application or server.
+      It acts as a bridge between frontend and backend.
+    </p>
+  </div>
+
+  <!-- 2. Fetch Data from API -->
+  <div class="box">
+    <h2> Fetch Data from Public API</h2>
+    <button onclick="fetchUsers()">Fetch Users</button>
+    <pre id="apiData"></pre>
+  </div>
+
+  <!-- 3. Object to JSON -->
+  <div class="box">
+    <h2> Convert Object to JSON</h2>
+    <button onclick="convertToJSON()">Convert</button>
+    <pre id="jsonOutput"></pre>
+  </div>
+
+  <!-- 4. localStorage -->
+  <div class="box">
+    <h2> localStorage Store & Retrieve</h2>
+    <button onclick="saveName()">Save Name</button>
+    <button onclick="getName()">Get Name</button>
+    <pre id="storageOutput"></pre>
+  </div>
+
+  <!-- 5. localStorage vs sessionStorage -->
+  <div class="box">
+    <h2> localStorage vs sessionStorage</h2>
+    <button onclick="storeLocal()">Store in localStorage</button>
+    <button onclick="storeSession()">Store in sessionStorage</button>
+    <pre id="storageCompare"></pre>
+  </div>
+
+<script>
+  //  Fetch API
+  async function fetchUsers() {
+    try {
+      const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await response.json();
+      document.getElementById("apiData").textContent =
+        JSON.stringify(data, null, 2);
+    } catch (error) {
+      document.getElementById("apiData").textContent = "Error fetching data";
+    }
+  }
+
+  //  Object to JSON
+  function convertToJSON() {
+    const user = {
+      name: "Vishwa",
+      age: 20,
+      role: "Student"
+    };
+    const json = JSON.stringify(user, null, 2);
+    document.getElementById("jsonOutput").textContent = json;
+  }
+
+  //  localStorage
+  function saveName() {
+    localStorage.setItem("username", "Vishwa");
+    document.getElementById("storageOutput").textContent =
+      "Name saved in localStorage";
+  }
+
+  function getName() {
+    const name = localStorage.getItem("username");
+    document.getElementById("storageOutput").textContent =
+      "Stored name: " + name;
+  }
+
+  //  localStorage vs sessionStorage
+  function storeLocal() {
+    localStorage.setItem("type", "Persistent Data");
+    document.getElementById("storageCompare").textContent =
+      "Saved in localStorage (stays after browser close)";
+  }
+
+  function storeSession() {
+    sessionStorage.setItem("type", "Temporary Data");
+    document.getElementById("storageCompare").textContent =
+      "Saved in sessionStorage (clears when tab closes)";
+  }
+</script>
+
+</body>
+</html>
